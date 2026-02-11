@@ -153,21 +153,23 @@ app = FastAPI(
 )
 
 # ======================================================
-# 🌐 CORS (Vercel + Local)
+# 🌐 CORS (Vercel + Local) - Fixed for all deployments
 # ======================================================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        # Local development
         "http://localhost:5173",
         "http://localhost:5174",
         "http://127.0.0.1:5173",
-        # "https://new-web-hub-new.vercel.app",  # ✅ Vercel frontend
-        # "https://news-frontend-ce50.onrender.com",
-        "https://news-web-hub-cicddocker.vercel.app",
     ],
+    # ✅ Allow all Vercel preview and production deployments
+    allow_origin_regex=r"https://news-web-hub-cicddocker.*\.vercel\.app",
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=3600,
 )
 
 # ======================================================
