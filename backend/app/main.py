@@ -162,7 +162,8 @@ app.add_middleware(
         "http://localhost:5174",
         "http://127.0.0.1:5173",
         # "https://new-web-hub-new.vercel.app",  # ✅ Vercel frontend
-        "https://news-frontend-ce50.onrender.com",
+        # "https://news-frontend-ce50.onrender.com",
+        "https://news-web-hub-cicddocker.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
